@@ -20,54 +20,84 @@ var coches = [
   ['Mercedes', 'Calse D', 2011, 21221],
 ];
 
-//FILTER
+//1.Filtrar coches y quitar marca Kia y Alfa Romeo aparte que sean más viejos que 20 años, es decir del 2001
 
-//Función flecha filter
+//1.1-Función normal
 
-let listaFiltrada = coches.filter(
-  coches => coches[0] != 'Kia' && coches[0] != 'Alfa Romeo' && coches[2] < 2001
+//1.2-Función flecha
+
+let listaFiltradaFlecha = coches.filter(coche => {
+  let condicion =
+    coche[0] != 'Kia' && coche[0] != 'Alfa Romeo' && coche[2] < 2001;
+  return condicion;
+});
+console.log('MUESTRA TABLA FILTRADA POR FUNCIÓN FLECHA');
+console.table(listaFiltradaFlecha);
+
+//1.3-Función anónima
+
+let listraFiltradaAnonima = coches.filter(function (coche) {
+  let condicion =
+    coche[0] != 'Kia' && coche[0] != 'Alfa Romeo' && coche[2] < 2001;
+  return condicion;
+});
+
+console.log('MUESTRA TABLA FILTRADA POR FUNCIÓN ANONIMA');
+console.table(listraFiltradaAnonima);
+
+//2.Ordena los coches por precio
+
+//2.1-Función normal
+
+//2.2-Función flecha
+
+let listaOrdenadaFlecha = coches.sort((precioSuperior, precioInferior) => {
+  let resta = precioSuperior[3] - precioInferior[3];
+  return resta;
+});
+
+console.log('MUESTRA LA TABLA ORDENADA POR FUNCIÓN FLECHA');
+console.table(listaOrdenadaFlecha);
+
+//2.3-Función anónima
+
+let listaOrdenadaAnonima = coches.sort(function (
+  precioSuperior,
+  precioInferior
+) {
+  let resta = precioSuperior[3] - precioInferior[3];
+  return resta;
+});
+
+console.log('MUESTRA LA TABLA ORDENADA POR FUNCIÓN ANÓNIMA');
+console.table(listaOrdenadaAnonima);
+
+//3.Retorna con un 20% de descuento.
+
+//3.1-Función normal
+
+//3.2-Función flecha
+
+let listaDescuentoFuncionFlecha = coches.map(coche => {
+  let rebaja = coche[3] - coche[3] * 0.2;
+  let mostrarCoches = [coche[0], coche[1], coche[2], rebaja];
+  return mostrarCoches;
+});
+
+console.log(
+  'MUESTRA LA TABLA CON EL PRECIO DESCONTADO UN 20% CON FUNCIÓN FLECHA'
 );
+console.table(listaDescuentoFuncionFlecha);
 
-console.table(listaFiltrada);
+//3.3-Función anónima
 
-//Función normal filter
-function listaFiltradaNormal(coches) {
-  if (coches[0] != 'Kia' && coches[0] != 'Alfa Romeo') {
-    console.log('Lista filtrada normal');
-  }
-}
-
-//SORT
-
-//Funcion flecha Sort
-
-let listaOrdenada = coches.sort((precioA, precioB) => {
-  return precioA[3] - precioB[3];
+let listaDescuentoFuncionAnonima = coches.map(function (coche) {
+  let rebaja = coche[3] - coche[3] * 0.2;
+  let mostrarCoches = [coche[0], coche[1], coche[2], rebaja];
+  return mostrarCoches;
 });
 
-console.table(listaOrdenada);
-
-//Función anónima sort
-
-coches.sort(function (precioA, precioB) {
-  return precioA[3] - precioB[3];
-});
-
-console.table(coches);
-
-//REDUCE
-
-//Función flecha
-
-let listaRebajada = coches.reduce(coche => {
-  return (coche[3] = coche[3] - coche[3] * 0.2);
-});
-
-//Función anónima
-
-/*let listaRebajada = coches.map(function (coche) {
-  coche[3] = coche[3] - coche[3] * 0.2;
-  return [coche[0], coche[1], coche[2], coche[3]];
-});*/
-console.log('Lista Rebajada');
-console.table(listaRebajada);
+console.log(
+  'MUESTRA LA TABLA CON EL PRECIO DESCONTADO UN 20% CON FUNCIÓN ANÓNIMA'
+);
+console.table(listaDescuentoFuncionAnonima);
