@@ -24,6 +24,23 @@ var coches = [
 
 //1.1-Función normal
 
+function listaFiltradaOrdinaria() {
+  let arrayNuevaFiltrada = [];
+  for (let i = 0; i < coches.length; i++) {
+    if (
+      coches[i][0] != 'Kia' &&
+      coches[i][0] != 'Alfa Romeo' &&
+      coches[i][2] < 2001
+    ) {
+      arrayNuevaFiltrada.push(coches[i]);
+    }
+  }
+  console.log('MUESTRA TABLA FILTRADA POR FUNCIÓN ORDINARIA');
+  console.table(arrayNuevaFiltrada);
+}
+
+listaFiltradaOrdinaria();
+
 //1.2-Función flecha
 
 let listaFiltradaFlecha = coches.filter(coche => {
@@ -49,10 +66,22 @@ console.table(listraFiltradaAnonima);
 
 //2.1-Función normal
 
+function listaOrdenadaOrdinaria() {
+  let arrayNuevaOrdenada = [];
+  for (let i = 0; i < coches.length; i++) {
+    coches[i][3] - coches[i][3];
+    arrayNuevaOrdenada.push(coches[i]);
+  }
+  console.log('MUESTRA TABLA ORDENADA POR FUNCIÓN ORDINARIA');
+  console.table(arrayNuevaOrdenada);
+}
+
+listaOrdenadaOrdinaria();
+
 //2.2-Función flecha
 
 let listaOrdenadaFlecha = coches.sort((precioSuperior, precioInferior) => {
-  let resta = precioSuperior[3] - precioInferior[3];
+  let resta = precioInferior[3] - precioSuperior[3];
   return resta;
 });
 
@@ -65,7 +94,7 @@ let listaOrdenadaAnonima = coches.sort(function (
   precioSuperior,
   precioInferior
 ) {
-  let resta = precioSuperior[3] - precioInferior[3];
+  let resta = precioInferior[3] - precioSuperior[3];
   return resta;
 });
 
@@ -75,6 +104,19 @@ console.table(listaOrdenadaAnonima);
 //3.Retorna con un 20% de descuento.
 
 //3.1-Función normal
+
+function listaDescuentoOrdinaria() {
+  let arrayNuevaDescuento = [];
+  for (let i = 0; i < coches.length; i++) {
+    let rebaja = coches[i][3] - coches[i][3] * 0.2;
+    arrayNuevaDescuento = [coches[i][0], coches[i][0], coches[i][2], rebaja];
+  }
+  console.log(
+    'MUESTRA LA TABLA CON EL PRECIO DESCONTADO UN 20% CON FUNCIÓN ORDINARIA'
+  );
+  console.table(arrayNuevaDescuento);
+}
+listaDescuentoOrdinaria();
 
 //3.2-Función flecha
 
