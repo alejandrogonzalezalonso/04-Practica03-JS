@@ -20,6 +20,12 @@ var coches = [
   ['Mercedes', 'Calse D', 2011, 21221],
 ];
 
+function comparar(precioA, precioB) {
+  if (precioA[3] < precioB[3]) return 1;
+  if (precioA[3] > precioB[3]) return -1;
+  return 0;
+}
+
 //1.Filtrar coches y quitar marca Kia y Alfa Romeo aparte que sean más viejos que 20 años, es decir del 2001
 
 //1.1-Función normal
@@ -67,14 +73,17 @@ console.table(listraFiltradaAnonima);
 //2.1-Función normal
 
 function listaOrdenadaOrdinaria() {
-  let arrayNuevaOrdenada = [];
+  let arrayNueva = [];
   for (let i = 0; i < coches.length; i++) {
-    coches[i][3] - coches[i][3];
-    arrayNuevaOrdenada.push(coches[i]);
+    arrayNueva[i] = coches[i].slice();
   }
-  console.log('MUESTRA TABLA ORDENADA POR FUNCIÓN ORDINARIA');
-  console.table(arrayNuevaOrdenada);
+  let nuevoArray = arrayNueva;
+  nuevoArray.sort(comparar);
+
+  return nuevoArray;
 }
+console.log('MUESTRA TABLA ORDENADA POR FUNCIÓN ORDINARIA');
+console.table(listaOrdenadaOrdinaria());
 
 listaOrdenadaOrdinaria();
 
